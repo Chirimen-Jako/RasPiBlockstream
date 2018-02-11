@@ -1,6 +1,6 @@
 # RasPiBlockstream
 
-![Badge Status](https://ci-as-a-service)
+# ![Badge Status](https://ci-as-a-service)
 
 Installation Guide and patches to install gnuradio, Blockstream satellite, and bitcoin-fibre into Raspberry Pi 3 model B
 
@@ -8,7 +8,7 @@ Installation Guide and patches to install gnuradio, Blockstream satellite, and b
 
 Quick and dirty installation guide and some patches to reduce your pain for installation Blockstream, gnuradio, and bitcoin-fibre into Raspberry Pi 3 model B. My goal is this project can be start point of the making up portable bitcoin transaction system with low-cost and small single-board computer.
 
-For more information, see https://github.com/ChrimenJako/RasPiBlockstream/doc
+For more information, see https://github.com/Chirimen-Jako/RasPiBlockstream/doc
 
 ## Requirement
 
@@ -24,18 +24,18 @@ For more information, see https://github.com/ChrimenJako/RasPiBlockstream/doc
     Quick start:
 
         Download the following 2 files.
-            https://github.com/ChrimenJako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B_0.01.pdf
-            https://github.com/ChrimenJako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-07_1.tar.gz
+            https://github.com/Chirimen-Jako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B_0.01.pdf
+            https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-07_1.tar.gz
 
     Clone repository:
 
-        $ git clone https://github.com/ChrimenJako/RasPiBlockstream
+        $ git clone https://github.com/Chirimen-Jako/RasPiBlockstream
 
 ## Trouble Shootings
 
     You can compare your buildall.log with the following successful build log.
 
-        https://github.com/ChrimenJako/RasPiBlockstream/tarball/success-example-buildall.tar.gz
+        https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/success-example-buildall.tar.gz
 
 ## Anything Else
 
