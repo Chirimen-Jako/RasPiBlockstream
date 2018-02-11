@@ -1,7 +1,5 @@
 # RasPiBlockstream
 
-# ![Badge Status](https://ci-as-a-service)
-
 Installation Guide and patches to install gnuradio, Blockstream satellite, and bitcoin-fibre into Raspberry Pi 3 model B
 
 ## Description
