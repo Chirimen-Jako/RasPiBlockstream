@@ -1,0 +1,12 @@
+--- CMakeLists.txt.original	2018-01-11 05:23:09.973708372 +0900
++++ CMakeLists.txt	2018-01-11 05:33:14.733142893 +0900
+@@ -189,6 +189,9 @@ include(GrMiscUtils) #compiler flag chec
+ if(CMAKE_COMPILER_IS_GNUCXX AND NOT WIN32)
+     #http://gcc.gnu.org/wiki/Visibility
+     GR_ADD_CXX_COMPILER_FLAG_IF_AVAILABLE(-fvisibility=hidden HAVE_VISIBILITY_HIDDEN)
++    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768")
++    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768")
++    SET(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768")
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX)

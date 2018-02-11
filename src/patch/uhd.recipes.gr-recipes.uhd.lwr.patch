@@ -1,0 +1,18 @@
+--- uhd.lwr.original	2018-01-28 21:56:43.036632542 +0900
++++ uhd.lwr	2018-01-29 00:04:08.332905219 +0900
+@@ -32,9 +32,14 @@ satisfy:
+   port: uhd
+   portage: net-wireless/uhd
+ source: git+https://github.com/EttusResearch/uhd.git
+-gitbranch: master
++gitbranch: release_003_010_002_000
++#gitbranch: master
+ #gitbranch: rfnoc-devel
+ inherit: cmake
+ configuredir: host/build
+ makedir: host/build
+ installdir: host/build
++configure: ' cp ~/uhd.host.cmake.Toolchains.RaspberryPi3_Model_B.cmake ../cmake/Toolchains/RaspberryPi3_Model_B.cmake &&
++             cmake .. -DCMAKE_BUILD_TYPE=$cmakebuildtype -DCMAKE_INSTALL_PREFIX=$prefix $config_opt -Wno-dev '
++vars:
++  config_opt: " -DCMAKE_TOOLCHAIN_FILE=../cmake/Toolchains/RaspberryPi3_Model_B.cmake "

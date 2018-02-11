@@ -1,0 +1,11 @@
+--- configure.original	2018-01-16 11:38:13.927607087 +0900
++++ configure	2018-01-16 11:40:52.747460976 +0900
+@@ -3087,6 +3087,8 @@ fi
+ ## -------------------- ##
+ 
+ ac_ext=c
++# temporaly patches for Raspberry Pi 3 model B
++CPPFLAGS='-march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768'
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'

@@ -1,0 +1,19 @@
+--- bootstrap.sh.original	2018-01-28 11:46:36.459495754 +0900
++++ bootstrap.sh	2018-01-29 17:54:31.917035425 +0900
+@@ -48,7 +48,16 @@ fi
+ 
+ autoscan
+ $LIBTOOLIZE --copy --automake
++if [ ! -e ./configure.ac.orig ]; then
++  patch --backup ./configure.ac < ~/apache-thrift.configure.ac.patch
++fi
+ aclocal -I ./aclocal
+ autoheader
++if [ ! -e ./lib/cpp/src/thrift/transport/TSSLSocket.cpp.orig ]; then
++  patch --backup ./lib/cpp/src/thrift/transport/TSSLSocket.cpp < ~/apache-thrift.lib.cpp.src.thrift.transport.TSSLSocket.cpp.patch
++fi
+ autoconf
++if [ ! -e ./configure.orig ]; then
++  patch --backup ./configure < ~/apache-thrift.configure.patch
++fi
+ automake --copy --add-missing --foreign

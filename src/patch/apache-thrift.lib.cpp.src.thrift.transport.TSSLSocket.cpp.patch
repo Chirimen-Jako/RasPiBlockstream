@@ -1,0 +1,112 @@
+--- TSSLSocket.cpp	2018-01-19 05:50:23.058756866 +0900
++++ TSSLSocket.cpp	2018-01-19 09:36:52.858892142 +0900
+@@ -54,14 +54,14 @@ namespace transport {
+ // OpenSSL initialization/cleanup
+ 
+ static bool openSSLInitialized = false;
+-static boost::shared_array<Mutex> mutexes;
++//static boost::shared_array<Mutex> mutexes;
+ 
+ static void callbackLocking(int mode, int n, const char*, int) {
+-  if (mode & CRYPTO_LOCK) {
+-    mutexes[n].lock();
+-  } else {
+-    mutexes[n].unlock();
+-  }
++  //if (mode & CRYPTO_LOCK) {
++  //  mutexes[n].lock();
++  //} else {
++  //  mutexes[n].unlock();
++  //}
+ }
+ 
+ #if (OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_NO_THREAD_ID)
+@@ -75,13 +75,13 @@ static CRYPTO_dynlock_value* dyn_create(
+ }
+ 
+ static void dyn_lock(int mode, struct CRYPTO_dynlock_value* lock, const char*, int) {
+-  if (lock != NULL) {
+-    if (mode & CRYPTO_LOCK) {
+-      lock->mutex.lock();
+-    } else {
+-      lock->mutex.unlock();
+-    }
+-  }
++  //if (lock != NULL) {
++  //  if (mode & CRYPTO_LOCK) {
++  //    lock->mutex.lock();
++  //  } else {
++  //    lock->mutex.unlock();
++  //  }
++  //}
+ }
+ 
+ static void dyn_destroy(struct CRYPTO_dynlock_value* lock, const char*, int) {
+@@ -96,12 +96,12 @@ void initializeOpenSSL() {
+   SSL_library_init();
+   SSL_load_error_strings();
+   // static locking
+-  mutexes = boost::shared_array<Mutex>(new Mutex[ ::CRYPTO_num_locks()]);
+-  if (mutexes == NULL) {
+-    throw TTransportException(TTransportException::INTERNAL_ERROR,
+-                              "initializeOpenSSL() failed, "
+-                              "out of memory while creating mutex array");
+-  }
++  //mutexes = boost::shared_array<Mutex>(new Mutex[ ::CRYPTO_num_locks()]);
++  //if (mutexes == NULL) {
++  //  throw TTransportException(TTransportException::INTERNAL_ERROR,
++  //                            "initializeOpenSSL() failed, "
++  //                            "out of memory while creating mutex array");
++  //}
+ #if (OPENSSL_VERSION_NUMBER < OPENSSL_VERSION_NO_THREAD_ID)
+   CRYPTO_set_id_callback(callbackThreadID);
+ #endif
+@@ -128,7 +128,7 @@ void cleanupOpenSSL() {
+   EVP_cleanup();
+   CRYPTO_cleanup_all_ex_data();
+   ERR_remove_state(0);
+-  mutexes.reset();
++  //mutexes.reset();
+ }
+ 
+ static void buildErrors(string& message, int error = 0);
+@@ -138,11 +138,11 @@ static char uppercase(char c);
+ // SSLContext implementation
+ SSLContext::SSLContext(const SSLProtocol& protocol) {
+   if (protocol == SSLTLS) {
+-    ctx_ = SSL_CTX_new(SSLv23_method());
+-  } else if (protocol == SSLv3) {
+-    ctx_ = SSL_CTX_new(SSLv3_method());
+-  } else if (protocol == TLSv1_0) {
+-    ctx_ = SSL_CTX_new(TLSv1_method());
++  //  ctx_ = SSL_CTX_new(SSLv23_method());
++  //} else if (protocol == SSLv3) {
++  //  ctx_ = SSL_CTX_new(SSLv3_method());
++  //} else if (protocol == TLSv1_0) {
++  //  ctx_ = SSL_CTX_new(TLSv1_method());
+   } else if (protocol == TLSv1_1) {
+     ctx_ = SSL_CTX_new(TLSv1_1_method());
+   } else if (protocol == TLSv1_2) {
+@@ -445,11 +445,11 @@ void TSSLSocket::authorize() {
+ 
+ // TSSLSocketFactory implementation
+ uint64_t TSSLSocketFactory::count_ = 0;
+-Mutex TSSLSocketFactory::mutex_;
++//Mutex TSSLSocketFactory::mutex_;
+ bool TSSLSocketFactory::manualOpenSSLInitialization_ = false;
+ 
+ TSSLSocketFactory::TSSLSocketFactory(SSLProtocol protocol) : server_(false) {
+-  Guard guard(mutex_);
++  //Guard guard(mutex_);
+   if (count_ == 0) {
+     if (!manualOpenSSLInitialization_) {
+       initializeOpenSSL();
+@@ -461,7 +461,7 @@ TSSLSocketFactory::TSSLSocketFactory(SSL
+ }
+ 
+ TSSLSocketFactory::~TSSLSocketFactory() {
+-  Guard guard(mutex_);
++  //Guard guard(mutex_);
+   ctx_.reset();
+   count_--;
+   if (count_ == 0 && !manualOpenSSLInitialization_) {

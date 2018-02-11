@@ -1,0 +1,10 @@
+--- soapysdr.lwr.original	2018-02-01 14:40:53.866189028 +0900
++++ soapysdr.lwr	2018-02-01 15:06:42.330327870 +0900
+@@ -25,3 +25,7 @@ gitbranch: master
+ inherit: cmake
+ # Let's always build this from source, not binaries
+ source: git+git://github.com/pothosware/SoapySDR.git
++vars:
++  config_opt: " -DENABLE_PYTHON3=OFF "
++install: sudo make install
++uninstall: sudo make uninstall

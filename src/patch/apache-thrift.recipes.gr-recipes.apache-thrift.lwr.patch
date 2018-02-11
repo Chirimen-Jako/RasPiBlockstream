@@ -1,0 +1,20 @@
+--- apache-thrift.lwr.original	2018-01-28 21:07:28.171424214 +0900
++++ apache-thrift.lwr	2018-01-29 01:29:34.155309922 +0900
+@@ -18,14 +18,15 @@
+ #
+ 
+ category: baseline
+-configure: './bootstrap.sh && ./configure --prefix=$prefix
++configure: '~/apache-thrift.patch_bootstrap.sh &&
++  ./bootstrap.sh && ./configure --prefix=$prefix
+   --with-c_glib --with-cpp --with-libevent --with-python
+   --without-csharp --without-d --without-erlang --without-go
+   --without-haskell --without-java --without-lua --without-nodejs
+   --without-perl --without-php --without-ruby --without-zlib
+   --without-qt4 --without-qt5
+   --disable-tests --disable-tutorial $config_opt
+-  PY_PREFIX=$prefix CXXFLAGS="-DNDEBUG"
++  PY_PREFIX=$prefix CXXFLAGS="-march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768 -DNDEBUG"
+   '
+ depends:
+ - libtool
