@@ -1,4 +1,5 @@
 #!/bin/bash
+HOME_PREFIX="$HOME/prefix"
 #
 # Check sudo password.
 #
@@ -50,15 +51,16 @@ cd
 #
 # Cleanup old files
 #
-sudo rm -rd ~/prefix
+sudo rm -rd $HOME_PREFIX
 sudo rm -rd ~/.pybombs
 sudo rm -rd ~/satellite
 sudo rm -rd ~/bitcoinfibre
 #
 # Set environment variables
 #
-echo 'export PYTHONPATH="$HOME/prefix/lib/python2.7/site-packages:$HOME/prefix/lib/python2.7/dist-packages:/usr/local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages"' >> ~/.profile
-echo 'export LD_LIBRARY_PATH="$HOME/prefix/lib"' >> ~/.profile
+echo 'export PATH="$HOME_PREFIX/bin:$PATH"' >> ~/.profile
+echo 'export PYTHONPATH="$HOME_PREFIX/lib/python2.7/site-packages:$HOME_PREFIX/lib/python2.7/dist-packages:/usr/local/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages"' >> ~/.profile
+echo 'export LD_LIBRARY_PATH="$HOME_PREFIX/lib"' >> ~/.profile
 echo 'sudo ldconfig' >> ~/.profile
 #
 # Reload environment variables
@@ -112,11 +114,11 @@ patch --backup ~/.pybombs/recipes/gr-recipes/soapysdr.lwr < ~/soapysdr.recipes.g
 # Install gnuradio and recipes
 #
 #git clone git://git.osmocom.org/osmo-sdr.git osmo-sdr
-pybombs -y -vv prefix init ~/prefix -a myprefix -R gnuradio-default
-cd ~/prefix
+pybombs -y -vv prefix init $HOME_PREFIX -a myprefix -R gnuradio-default
+cd $HOME_PREFIX
 pybombs -y -v install rtl-sdr
 if [ ! -e /etc/udev/rules.d/rtl-sdr.rules ]; then
-  sudo cp ~/prefix/src/rtl-sdr/rtl-sdr.rules /etc/udev/rules.d/
+  sudo cp $HOME_PREFIX/src/rtl-sdr/rtl-sdr.rules /etc/udev/rules.d/
 fi
 pybombs -y -v install osmo-sdr
 pybombs -y -v install bladeRF
@@ -136,17 +138,19 @@ pybombs -y -v install gr-framers
 # Install Blockstream satellite (install mods)
 #
 cd ~/satellite
-cp -rd gr-mods ~/prefix/src/
-cd ~/prefix/src
+cp -rd gr-mods $HOME_PREFIX/src/
+cd $HOME_PREFIX/src
 # Check if the build directory exists
 if [ -d ./gr-mods/build ]; then
   sudo rm -rd ./gr-mods/build
 fi
 mkdir ./gr-mods/build
 cd ./gr-mods/build
-cmake .. -DCMAKE_PREFIX_PATH=~/prefix/lib/cmake/gnuradio
+cmake .. -DCMAKE_PREFIX_PATH=$HOME_PREFIX/lib/cmake/gnuradio
 make -j4
 sudo make install
+# Copy gr-mods/grc/mods*.xml blocks into share/gnuradio/grc/blocks
+sudo cp -rd $HOME_PREFIX/src/gr-mods/grc/*.xml $HOME_PREFIX/share/gnuradio/grc/blocks
 #
 # Install Bitcoin FIBRE
 #
