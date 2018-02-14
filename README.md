@@ -46,16 +46,14 @@ Wait for Blockstream announce.
 I'm inspired and received a lot of information from [grubles](https://twitter.com/notgrubles) and the following links.
     If you want to construct normal Blockstream station (not using Raspberry Pi, but also with enough powerful PC), you should refer to the following links.
 
-    [Building Your Own Bitcoin Satellite Node: Part 1 — Hardware Assembly](https://hackernoon.com/building-your-own-bitcoin-satellite-node-6061d3c93e7)
-
-    [Building Your Own Bitcoin Satellite Node: Part 2 — Software Installation](https://medium.com/@notgrubles/building-your-own-bitcoin-satellite-node-part-2-software-installation-a94a0b85d089)
-
-    [Building Your Own Bitcoin Satellite Node: Part 3 — Dish Alignment](https://hackernoon.com/building-your-own-bitcoin-satellite-node-part-3-dish-alignment-1306b4c21326)
+  [Building Your Own Bitcoin Satellite Node: Part 1 — Hardware Assembly](https://hackernoon.com/building-your-own-bitcoin-satellite-node-6061d3c93e7) 
+  [Building Your Own Bitcoin Satellite Node: Part 2 — Software Installation](https://medium.com/@notgrubles/building-your-own-bitcoin-satellite-node-part-2-software-installation-a94a0b85d089) 
+  [Building Your Own Bitcoin Satellite Node: Part 3 — Dish Alignment](https://hackernoon.com/building-your-own-bitcoin-satellite-node-part-3-dish-alignment-1306b4c21326) 
 
 ## Author
 
-[@Luqina](https://twitter.com/Luqina)
-[@Auriga](https://twitter.com/aurigajp)
+[@Luqina](https://twitter.com/Luqina) 
+[@Auriga](https://twitter.com/aurigajp) 
 
 ## License
 
