@@ -168,3 +168,4 @@ cd bitcoinfibre
 make -j4
 sudo make install
 cd
+echo 'everithing finished.'
