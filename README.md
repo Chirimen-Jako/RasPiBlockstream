@@ -23,7 +23,7 @@ For more information, see https://github.com/Chirimen-Jako/RasPiBlockstream/doc
 
         Download the following 2 files.
             https://github.com/Chirimen-Jako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B_0.01.pdf
-            https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-07_1.tar.gz
+            https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-17_1.tar.gz
 
     Clone repository:
 
