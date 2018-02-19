@@ -22,18 +22,18 @@ For more information, see https://github.com/Chirimen-Jako/RasPiBlockstream/doc
     Quick start:
 
         Download the following 2 files.
-            https://github.com/Chirimen-Jako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B-2018-02-18_1.pdf
-            https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-18_1.tar.gz
+            [https://github.com/Chirimen-Jako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B-2018-02-18_1.pdf](https://github.com/Chirimen-Jako/RasPiBlockstream/doc/InstallGuideBlockstreamRasPi3B-2018-02-18_1.pdf)
+            [https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-18_1.tar.gz](https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/build_Blockstream_RasPi3B-2018-02-18_1.tar.gz)
 
     Clone repository:
 
-        $ git clone https://github.com/Chirimen-Jako/RasPiBlockstream
+        $ git clone [https://github.com/Chirimen-Jako/RasPiBlockstream](https://github.com/Chirimen-Jako/RasPiBlockstream)
 
 ## Trouble Shootings
 
     You can compare your buildall.log with the following successful build log.
 
-        https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/success-example-buildall.tar.gz
+        [https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/success-example-buildall.tar.gz](https://github.com/Chirimen-Jako/RasPiBlockstream/tarball/success-example-buildall.tar.gz)
 
 ## Anything Else
 
