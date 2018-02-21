@@ -53,8 +53,8 @@ cd
 #
 sudo rm -rd ${HOME_PREFIX}
 sudo rm -rd ~/.pybombs
-sudo rm -rd ~/satellite
-sudo rm -rd ~/bitcoinfibre
+#sudo rm -rd ~/satellite
+#sudo rm -rd ~/bitcoinfibre
 #
 # Set environment variables
 #
@@ -106,10 +106,21 @@ sudo apt -y install python-sphinx
 #
 # Specific patches for Raspberry Pi 3 model B
 #
-patch --backup ~/.pybombs/recipes/gr-recipes/apache-thrift.lwr < ~/apache-thrift.recipes.gr-recipes.apache-thrift.lwr.patch
-patch --backup ~/.pybombs/recipes/gr-recipes/uhd.lwr < ~/uhd.recipes.gr-recipes.uhd.lwr.patch
-patch --backup ~/.pybombs/recipes/gr-recipes/gnuradio.lwr < ~/gnuradio.recipes.gr-recipes.gnuradio.lwr.patch
-patch --backup ~/.pybombs/recipes/gr-recipes/soapysdr.lwr < ~/soapysdr.recipes.gr-recipes.soapysdr.lwr.patch
+if [ ! -e ~/.pybombs/recipes/gr-recipes/apache-thrift.lwr.orig ]; then
+  patch --backup ~/.pybombs/recipes/gr-recipes/apache-thrift.lwr < ~/apache-thrift.recipes.gr-recipes.apache-thrift.lwr.patch
+fi
+if [ ! -e ~/.pybombs/recipes/gr-recipes/uhd.lwr.orig ]; then
+  patch --backup ~/.pybombs/recipes/gr-recipes/uhd.lwr < ~/uhd.recipes.gr-recipes.uhd.lwr.patch
+fi
+if [ ! -e ~/.pybombs/recipes/gr-recipes/gnuradio.lwr.orig ]; then
+  patch --backup ~/.pybombs/recipes/gr-recipes/gnuradio.lwr < ~/gnuradio.recipes.gr-recipes.gnuradio.lwr.patch
+fi
+if [ ! -e ~/.pybombs/recipes/gr-recipes/soapysdr.lwr.orig ]; then
+  patch --backup ~/.pybombs/recipes/gr-recipes/soapysdr.lwr < ~/soapysdr.recipes.gr-recipes.soapysdr.lwr.patch
+fi
+if [ ! -e ~/.pybombs/recipes/gr-etcetera/gr-framers.lwr.orig ]; then
+  patch --backup ~/.pybombs/recipes/gr-etcetera/gr-framers.lwr < ~/gr-framers.recipes.gr-etcetera.gr-framers.lwr.patch
+fi
 #
 # Install gnuradio and recipes
 #
@@ -132,6 +143,9 @@ pybombs -y -v install gr-osmosdr
 # Install Blockstream satellite (install gr-framers)
 #
 cd
+pybombs -y -v remove gr-framers
+sudo rm -rd ${HOME_PREFIX}/src/gr-framers
+sudo rm -rd ${HOME_PREFIX}/src/gr-mods
 git clone https://github.com/Blockstream/satellite
 pybombs -y -v install gr-framers
 #
@@ -146,6 +160,7 @@ if [ -d ./gr-mods/build ]; then
 fi
 mkdir ./gr-mods/build
 cd ./gr-mods/build
+~/gr-mods.CMakeLists.txt.patch.sh
 cmake .. -DCMAKE_PREFIX_PATH=${HOME_PREFIX}/lib/cmake/gnuradio
 make -j4
 sudo make install
@@ -168,4 +183,4 @@ cd bitcoinfibre
 make -j4
 sudo make install
 cd
-echo 'everithing finished.'
+echo 'everything finished.'
