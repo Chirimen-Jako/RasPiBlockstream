@@ -53,8 +53,8 @@ cd
 #
 sudo rm -rd ${HOME_PREFIX}
 sudo rm -rd ~/.pybombs
-#sudo rm -rd ~/satellite
-#sudo rm -rd ~/bitcoinfibre
+sudo rm -rd ~/satellite
+sudo rm -rd ~/bitcoinfibre
 #
 # Set environment variables
 #
