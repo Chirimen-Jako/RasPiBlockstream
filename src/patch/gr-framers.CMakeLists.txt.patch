@@ -1,0 +1,10 @@
+--- CMakeLists.txt.original	2018-02-21 21:50:51.866120419 +0900
++++ CMakeLists.txt	2018-02-21 21:50:31.276194779 +0900
+@@ -40,6 +40,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SO
+ if(CMAKE_COMPILER_IS_GNUCXX AND NOT WIN32)
+     #http://gcc.gnu.org/wiki/Visibility
+     add_definitions(-fvisibility=hidden)
++    add_definitions(-march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768)
+ endif()
+ 
+ ########################################################################

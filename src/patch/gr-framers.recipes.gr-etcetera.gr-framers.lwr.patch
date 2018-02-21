@@ -1,0 +1,8 @@
+--- gr-framers.lwr.original	2018-02-21 02:42:15.656603161 +0900
++++ gr-framers.lwr	2018-02-21 16:42:03.140399082 +0900
+@@ -24,3 +24,5 @@ description: Framer and Deframer Blocks
+ gitbranch: master
+ inherit: cmake
+ source: git+https://github.com/gr-vt/gr-framers.git
++configure: ' ~/gr-framers.CMakeLists.txt.patch.sh &&
++             cmake .. -DCMAKE_BUILD_TYPE=$cmakebuildtype -DCMAKE_INSTALL_PREFIX=$prefix $config_opt -Wno-dev '

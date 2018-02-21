@@ -1,0 +1,10 @@
+--- CMakeLists.txt.original	2018-02-21 22:41:32.916293949 +0900
++++ CMakeLists.txt	2018-02-21 22:43:33.336241535 +0900
+@@ -85,6 +85,7 @@ endif()
+ if(CMAKE_COMPILER_IS_GNUCXX AND NOT WIN32)
+     #http://gcc.gnu.org/wiki/Visibility
+     add_definitions(-fvisibility=hidden)
++    set(CMAKE_CXX_FLAGS "-march=armv7-a -mtune=cortex-a53 -mthumb -mfloat-abi=hard -mfpu=neon --param ggc-min-expand=1 --param ggc-min-heapsize=32768")
+ endif()
+ 
+ ########################################################################
